@@ -1,0 +1,35 @@
+.navbar .state{
+	margin-right: 5em;
+}
+.admin{
+	color: red;
+}
+.enter{
+	color:red;
+	cursor: pointer;
+}
+.logout{
+	cursor: pointer;
+}
+.normal{
+	color:#449d44;
+}
+#login{
+	width: 420px;
+	padding:50px;
+	margin:100px auto;
+	border:1px solid #ccc;
+}
+
+input{
+	width: 200px;
+}
+#login .loginbtn{
+	padding-top:30px; 
+}
+.warning{
+	margin:auto;
+	text-align: center;
+	color:red;
+	display: none;
+}

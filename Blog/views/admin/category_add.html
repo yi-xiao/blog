@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block main %}
+<ol class="breadcrumb">
+    <li><a href="#">添加首页</a></li>
+</ol>
+<form role="form" method="post">
+    <div class="form-group">
+        <label for="name">分类名称</label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="请输入具体分类">
+    </div>
+    <button type="submit" class="btn btn-primary">确定</button>
+</form>
+{% endblock %}
+

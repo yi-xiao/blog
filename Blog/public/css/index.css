@@ -1,0 +1,64 @@
+body{
+    padding-top: 100px;
+}
+#content,#views{
+    text-align: center;
+}
+#state{
+    font-family: '微软雅黑';
+}
+#state .active{
+    background:white;
+}
+.content{
+    text-align: left;
+    text-indent: 2em;
+}
+/*
+输入框样式
+*/
+
+#input{
+    padding-top:2em ;
+    width: 90%;
+    margin: auto;
+}
+#input .text{
+    height: 100px;
+}
+/*
+评论区样式
+*/
+#comments .panel-heading{
+    text-align: center;
+}
+#comments .contents{}
+#comments .time{
+    margin-left:2em;
+}
+#comments .comments-list{
+    padding-left: 3em;
+    border-bottom: dotted 1px red;
+}
+#comments .panel-heading{
+    font-weight: bold;
+    font-family: '微软雅黑';
+}
+#comments .name{
+    font-weight: bold;
+}
+#comments .floor,#comments .time{
+    opacity: 0.8;
+}
+#count{
+    font-weight: bold;
+}
+/*
+登录提醒
+*/
+.please{
+    text-align: center;
+    color: #761c19;
+    font-weight: bold;
+    padding:2em 0;
+}

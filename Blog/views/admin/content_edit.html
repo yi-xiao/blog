@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block main %}
+<ol class="breadcrumb">
+    <li><a href="#">修改首页</a></li>
+</ol>
+
+<form role="form" method="post">
+   <!--
+        测试能否获取到关联字段的ID值？？？解释欠佳
+        <p>{{contents.category._id.toString()}}</p>
+   -->
+    <div class="form-group">
+        <label for="category">所属分类</label>
+        <select id="category" name="category" class="form-control" style="width:300px">
+            {%for category in categories%}
+                {% if contents.category._id.toString() == category._id%}
+            <option value="{{category.id}}" selected>{{contents.category.name}}</option>
+                {%else%}
+            <option value="{{category.id}}">{{category.name}}</option>
+                {%endif%}
+
+            {%endfor%}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="title">内容标题</label>
+        <input type="text" id="title" name="title" class="form-control" value="{{contents.title}}" placeholder="请输入内容标题">
+    </div>
+    <div class="form-group">
+        <label for="description">内容简介</label>
+        <textarea id="description" name="description" class="form-control">{{contents.description}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="content">具体内容</label>
+        <textarea id="content" name="content" class="form-control" rows="5">{{contents.content}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">确定</button>
+</form>
+{% endblock %}

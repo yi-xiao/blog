@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>word博客</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/login.css">
+    <script src="/public/js/jquery-1.11.0.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/login.js"></script>
+</head>
+
+<body>
+<nav id="state" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">菜鸟教程</a>
+        </div>
+        <div class="auto navbar-left">
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    {%if category==''%}
+                    <li class="active"><a href="/">首页</a></li>
+                    {%else%}
+                    <li><a href="/">首页</a></li>
+                    {%endif%}
+                    {% for cute in categories%}
+                        {%if category==cute.id%}
+                            <li class="active"><a href="/?category={{cute.id}}">{{cute.name}}</a></li>
+                        {%else%}
+                            <li><a href="/?category={{cute.id}}">{{cute.name}}</a></li>
+                        {%endif%}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="state navbar-right">
+            {% if userInfo._id %}
+            {% if userInfo.isAdmin %}
+            <p class="navbar-text">尊敬的管理员：<span class="admin">{{userInfo.username}}</span>,你好！<a class="logout">[退出]</a>
+                <a class="enter" href="/admin">进入后台</a></p>
+            {% else %}
+            <p class="navbar-text">普通用户：<span class="normal">{{userInfo.username}}</span>,你好！<a class="logout">[退出]</a></p>
+            {% endif %}
+            {% else %}
+            <p class="navbar-text">游客，<a href="/logon">[未登录]</a></p>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+{%block main%}{%endblock%}
+</body>
+</html>

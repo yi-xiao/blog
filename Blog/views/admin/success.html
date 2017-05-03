@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block main %}
+<ol class="breadcrumb">
+    <li><a href="#">管理首页</a></li>
+</ol>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">温馨提醒</h3>
+    </div>
+    <div class="panel-body">
+        {{message}}
+    </div>
+</div>
+<a href="javascript:window.history.back()" class="btn btn-primary">返回上一页</a>
+<a href="{{url}}" class="btn btn-primary">返回管理首页</a>
+{% endblock %}

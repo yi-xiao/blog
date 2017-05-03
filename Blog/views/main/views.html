@@ -1,0 +1,62 @@
+{%extends 'coment.html'%}
+{% block main %}
+<div id="views" class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{contents.title}}
+            </div>
+            <p>
+                <span>作者：{{contents.user.username}}</span>
+                <span>阅读量：{{contents.views}}</span>
+                <span>写作时间：{{contents.addTime|date('Y-m-d H:i:s',-8*60)}}</span>
+                <span>评论：{{contents.comments.length}}条</span>
+            </p>
+            <p><span>简介： </span>{{contents.description}}</p>
+            <div>
+                <p class="content">
+                    {{contents.content}}
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="comments" class="container">
+    <div class="row">
+        <p>共 <span  id="count"></span> 条评论</p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                评论区，来抢沙发了
+            </div>
+            <input type="hidden" id="contentid" value="{{contents.id}}">
+            {%if userInfo._id%}
+            <div id="input">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" id="text"  class="form-control" class="text" placeholder="请畅所欲言，发表你的意见吧">
+
+                        <a id="submit" class="btn btn-primary">提交</a>
+                    </div>
+                </form>
+                {%else%}
+                <p class="please">你还没有登录，请先<a href="/logon">登录</a>再进行评论</p>
+                {%endif%}
+            </div>
+            <div id="all">
+                <!-- 自动产生 -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <ul id="pager" class="pager">
+        <li class="previous"><a href="javascript:;">&larr; 上一页</a></li>
+        <li>
+
+        </li>
+        <li class="next"><a href="javascript:;">下一页 &rarr;</a></li>
+    </ul>
+</div>
+<script src="/public/js/comments.js"></script>
+{% endblock %}

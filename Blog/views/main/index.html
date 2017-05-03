@@ -1,0 +1,53 @@
+{%extends 'coment.html'%}
+{% block main %}
+<div id="content" class="container">
+    {%if count==0%}
+    <h1>sorry,nothing in this block</h1>
+    {%endif%}
+    <div class="row">
+    {%for content in contents%}
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{content.title}}
+                </div>
+                <p>
+                    <span>作者：{{content.user.username}}</span>
+                    <span>阅读量：{{content.views}}</span>
+                    <span>写作时间：{{content.addTime|date('Y-m-d H:i:s',-8*60)}}</span>
+                    {%if contents.comments.length%}
+                    <span>评论：{{contents.comments.length}}条</span>
+                    {%else%}
+                    <span>评论：0条</span>
+                    {%endif%}
+
+                </p>
+                <p><span>简介： </span>{{content.description}}</p><a href="/views?contentId={{content.id}}">阅读原文</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+<div class="container">
+    <ul class="pager">
+        {% if page<=1%}
+        <li class="previous"><a> 没有上一页了</a></li>
+        {%else%}
+        <li class="previous"><a href="?category={{category}}&page={{page-1}}">&larr; 上一页</a></li>
+        {%endif%}
+        {%if count!=0%}
+        <li>
+            共 {{count}} 条数据，每页展示 {{limit}} 条，共 {{pager}} 页，当前第 {{page}} 页
+        </li>
+        {%else%}
+        <li>当前模块没有数据</li>
+        {%endif%}
+        {% if page>=pager%}
+        <li class="next"><a> 没有下一页了</a></li>
+        {%else%}
+        <li class="next"><a href="?category={{category}}&page={{page+1}}">下一页 &rarr;</a></li>
+        {%endif%}
+    </ul>
+</div>
+
+{% endblock %}
